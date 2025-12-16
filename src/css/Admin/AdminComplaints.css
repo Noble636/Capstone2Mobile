@@ -2,21 +2,18 @@
     min-height: 100vh;
     width: 100vw;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; /* Add this line for vertical centering */
+    flex-direction: column;      /* Ensure column direction */
+    align-items: center;         /* Center horizontally */
+    justify-content: center;     /* Center vertically */
     position: relative;
     background: linear-gradient(120deg, #ffb347 0%, #ff9a9e 40%, #fad0c4 70%, #b084cc 100%);
-    background-attachment: fixed;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    /* animation: admin-dashboard-bg-move 12s ease-in-out infinite alternate; */ /* Remove or comment out this line */
+    overflow: hidden;
     font-family: Arial, sans-serif;
     text-align: center;
-    padding-top: 32px;
-    padding-bottom: 32px;
+    box-sizing: border-box;      /* Prevent overflow from padding */
+    padding: 0;                  /* Remove horizontal padding */
 }
+
 .admin-complaints-container::-webkit-scrollbar {
     width: 10px;
     background: #e0b0ff;
@@ -35,16 +32,17 @@
     100% { background-position: 100% 50%; }
 }
 
+/* Background image fix */
 .home-bg-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    opacity: 0.25;
-    z-index: 0;
-    pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.25;
+  z-index: 0;
+  pointer-events: none;
 }
 
 @keyframes admin-dashboard-bg-move {
@@ -78,16 +76,20 @@
 }
 
 .admin-complaints-box {
-    background-color: white;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 800px;
-    box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    z-index: 2;
+    box-sizing: border-box;
+    margin: 0;
+    width: 95vw;
+    max-width: 400px;
+    padding: 24px 12px;
 }
 
 .admin-complaints-box h1 {
