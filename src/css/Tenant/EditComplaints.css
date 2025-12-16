@@ -482,3 +482,11 @@
     padding: 14px 6px;
   }
 }
+
+.edit-complaints-container .back-button,
+.edit-complaints-container .back-button:visited,
+.edit-complaints-container .back-button:active,
+.edit-complaints-container .back-button:focus,
+.edit-complaints-container .back-button:hover {
+    text-decoration: none !important;
+}
