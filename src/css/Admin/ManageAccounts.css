@@ -1,0 +1,376 @@
+.manage-accounts-container {
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    background: linear-gradient(120deg, #ffb347 0%, #ff9a9e 40%, #fad0c4 70%, #b084cc 100%);
+    animation: admin-dashboard-bg-move 12s ease-in-out infinite alternate;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.home-bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    opacity: 0.25;
+    z-index: 0;
+    pointer-events: none;
+}
+
+@keyframes admin-dashboard-bg-move {
+    0% {background-position:0% 50%;}
+    50% {background-position:100% 50%;}
+    100% {background-position:0% 50%;}
+}
+
+.manage-accounts-container .bubble {
+    position: absolute;
+    bottom: -60px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.35);
+    box-shadow: 0 0 12px 2px rgba(255,255,255,0.18);
+    animation: bubble-rise 8s linear infinite;
+    z-index: 1;
+}
+.manage-accounts-container .bubble.b1 { width: 32px; height: 32px; left: 10vw; animation-delay: 0s; }
+.manage-accounts-container .bubble.b2 { width: 18px; height: 18px; left: 25vw; animation-delay: 2s; }
+.manage-accounts-container .bubble.b3 { width: 24px; height: 24px; left: 40vw; animation-delay: 1s; }
+.manage-accounts-container .bubble.b4 { width: 14px; height: 14px; left: 60vw; animation-delay: 3s; }
+.manage-accounts-container .bubble.b5 { width: 28px; height: 28px; left: 80vw; animation-delay: 0.5s; }
+.manage-accounts-container .bubble.b6 { width: 20px; height: 20px; left: 70vw; animation-delay: 4s; }
+.manage-accounts-container .bubble.b7 { width: 12px; height: 12px; left: 55vw; animation-delay: 2.5s; }
+.manage-accounts-container .bubble.b8 { width: 22px; height: 22px; left: 35vw; animation-delay: 5s; }
+
+@keyframes bubble-rise {
+    0% { transform: translateY(0) scale(1); opacity: 0.7; }
+    80% { opacity: 0.7; }
+    100% { transform: translateY(-95vh) scale(1.15); opacity: 0; }
+}
+
+.manage-accounts-box {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+    position: relative;
+    border: 2.5px solid #000;
+}
+
+.manage-accounts-box h1 {
+    font-size: 2.5rem;
+    color: #333;
+    text-align: center;
+}
+
+.manage-accounts-box .back_to_dashboard_manage_accounts_button {
+    background-color: #7a4f13;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: box-shadow 0.3s, transform 0.2s;
+}
+
+.manage-accounts-box .back_to_dashboard_manage_accounts_button:hover {
+    background-color: #7a4f13;
+    color: #fff;
+    transform: scale(1.05);
+    box-shadow: 0 0 18px 4px #ebc61d, 0 2px 16px rgba(0,0,0,0.12);
+}
+
+.manage-accounts-box .back_to_dashboard_manage_accounts_button span {
+    font-size: 1.5rem;
+}
+
+.tenant-list {
+    margin-top: 20px;
+    width: 100%;
+    z-index: 2;
+    position: relative;
+    padding-top: 24px;
+    padding-bottom: 24px;
+}
+
+.tenant-item {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    border: 2.5px solid #000;
+    transition: background-color 0.3s;
+    z-index: 2;
+    position: relative;
+}
+
+.tenant-item:hover {
+    background-color: #f1f1f1;
+}
+
+.tenant-summary {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.tenant-details {
+    margin-top: 10px;
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.tenant-details p {
+    margin: 5px 0;
+}
+
+.tenant-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.delete-button {
+    background-color: #dc3545;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+}
+
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1002;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 80%;
+    max-width: 400px;
+}
+
+.modal-content h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.modal-content p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.modal-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.modal-button.confirm {
+    background-color: #007bff;
+    color: white;
+}
+
+.modal-button.confirm:hover {
+    background-color: #0056b3;
+}
+
+.modal-button.cancel {
+    background-color: #6c757d;
+    color: white;
+}
+
+.modal-button.cancel:hover {
+    background-color: #545b62;
+}
+
+.modal-button.delete-permanent {
+    background-color: #dc3545;
+    color: white;
+}
+
+.modal-button.delete-permanent:hover {
+    background-color: #c82333;
+}
+
+.modal-button.ok {
+    background-color: #28a745;
+    color: white;
+}
+
+.modal-button.ok:hover {
+    background-color: #1e7e34;
+}
+
+.modal-content.error {
+    border: 2px solid #dc3545;
+}
+
+.modal-content.error h2 {
+    color: #dc3545;
+}
+
+.modal-content.success {
+    border: 2px solid #28a745;
+}
+
+.modal-content.success h2 {
+    color: #28a745;
+}
+
+.modal-content.warning {
+    border: 2px solid #dc3545;
+}
+
+.modal-content.warning h2 {
+    color: #dc3545;
+}
+
+
+@media (max-width: 768px) {
+    .manage-accounts-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .manage-accounts-container .tenant-register-box,
+    .manage-accounts-container .account-preview-box {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+  .manage-accounts-container {
+    padding: 0 6px;
+    min-height: 100vh;
+    height: auto;
+  }
+
+  .manage-accounts-box {
+    padding: 14px 4px;
+    border-radius: 8px;
+    max-width: 99vw;
+    width: 100%;
+  }
+
+  .manage-accounts-box h1 {
+    font-size: 1.3rem;
+    margin-bottom: 16px;
+  }
+
+  .manage-accounts-box .back_to_dashboard_manage_accounts_button {
+    width: 100%;
+    font-size: 1rem;
+    padding: 10px 0;
+    border-radius: 8px;
+    margin-bottom: 14px;
+  }
+
+  .tenant-list {
+    margin-top: 12px;
+    width: 100%;
+  }
+
+  .tenant-item {
+    padding: 12px;
+    font-size: 0.98rem;
+    margin-bottom: 10px;
+    border: 2.5px solid #000;
+  }
+
+  .tenant-summary {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+
+  .tenant-details {
+    font-size: 0.95rem;
+  }
+
+  .tenant-actions {
+    flex-direction: column;
+    gap: 8px;
+    align-items: stretch;
+  }
+
+  .delete-button {
+    width: 100%;
+    font-size: 1rem;
+    padding: 8px 0;
+  }
+
+  .modal-content {
+    width: 98vw;
+    max-width: 99vw;
+    padding: 12px 4px;
+  }
+
+  .modal-content h2 {
+    font-size: 1.1rem;
+  }
+
+  .modal-content p {
+    font-size: 0.98rem;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .modal-button {
+    width: 100%;
+    font-size: 1rem;
+    padding: 10px 0;
+  }
+}

@@ -1,0 +1,326 @@
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import '../../css/Tenant/EditAccount.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+
+const EditAccount = () => {
+    const navigate = useNavigate();
+
+    const [tenantId, setTenantId] = useState(null);
+    const [username, setUsername] = useState('');
+    const [initialUsername, setInitialUsername] = useState('');
+    const [fullName, setFullName] = useState('');
+    const [email, setEmail] = useState('');
+    const [contactNumber, setContactNumber] = useState('');
+    const [apartmentId, setApartmentId] = useState('');
+    const [emergencyContact, setEmergencyContact] = useState('');
+    const [emergencyContactNumber, setEmergencyContactNumber] = useState('');
+    const [currentPassword, setCurrentPassword] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+
+    const [confirmTouched, setConfirmTouched] = useState(false);
+    const [showCurrentPassword, setShowCurrentPassword] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    const [showMessage, setShowMessage] = useState(false);
+    const [messageText, setMessageText] = useState('');
+    const [messageType, setMessageType] = useState('');
+
+    useEffect(() => {
+        const storedTenantId = localStorage.getItem('tenantId');
+        if (storedTenantId) {
+            setTenantId(storedTenantId);
+            fetchTenantData(storedTenantId);
+        } else {
+            setError('Tenant ID not found. Please log in.');
+            setLoading(false);
+        }
+    }, []);
+
+    const fetchTenantData = async (id) => {
+        setLoading(true);
+        setError(null);
+        try {
+            const response = await fetch(`https://tenantportal-backend.onrender.com/api/tenant/profile/${id}`);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+            setUsername(data.username || '');
+            setInitialUsername(data.username || '');
+            setFullName(data.full_name || '');
+            setEmail(data.email || '');
+            setContactNumber(data.contact_number || '');
+            setApartmentId(data.apartment_id || '');
+            setEmergencyContact(data.emergency_contact || '');
+            setEmergencyContactNumber(data.emergency_contact_number || '');
+        } catch (e) {
+            console.error('Error fetching tenant profile:', e);
+            setError('Failed to load account data.');
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const handleUpdate = async (e) => {
+        e.preventDefault();
+        setError('');
+
+        // Require current password if user changes password
+        if ((password || confirmPassword) && !currentPassword) {
+            setMessageText('Please enter your current password to update your password.');
+            setMessageType('error');
+            setShowMessage(true);
+            return;
+        }
+
+        // Require current password if user changes username
+        if (username && username !== initialUsername && !currentPassword) {
+            setMessageText('Please enter your current password to change your username.');
+            setMessageType('error');
+            setShowMessage(true);
+            return;
+        }
+
+        if ((password || confirmPassword) && password !== confirmPassword) {
+            setMessageText('New passwords do not match!');
+            setMessageType('error');
+            setShowMessage(true);
+            return;
+        }
+
+        const updateData = {
+            username,
+            fullName,
+            email,
+            contactNumber,
+            apartmentId,
+            emergencyContact,
+            emergencyContactNumber,
+        };
+
+        if (password) {
+            updateData.currentPassword = currentPassword;
+            updateData.newPassword = password;
+        }
+
+        if (username && username !== initialUsername) {
+            updateData.currentPassword = currentPassword;
+        }
+
+        try {
+            const response = await fetch(`https://tenantportal-backend.onrender.com/api/tenant/profile/${tenantId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(updateData),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                setMessageText(data.message || 'Account updated successfully!');
+                setMessageType('success');
+                setShowMessage(true);
+                setCurrentPassword('');
+                setPassword('');
+                setConfirmPassword('');
+                setConfirmTouched(false);
+                    fetchTenantData(tenantId);
+                    setInitialUsername(username);
+            } else {
+                setMessageText(data.message || 'Failed to update account.');
+                setMessageType('error');
+                setShowMessage(true);
+            }
+        } catch (error) {
+            console.error('Error updating account:', error);
+            setMessageText('Failed to connect to the server. Please try again.');
+            setMessageType('error');
+            setShowMessage(true);
+        }
+    };
+
+    const handleCancel = () => {
+        navigate('/tenant-dashboard');
+    };
+
+    const closeMessage = () => {
+        setShowMessage(false);
+        setMessageText('');
+        setMessageType('');
+    };
+
+    const toggleCurrentPasswordVisibility = () => {
+        setShowCurrentPassword(!showCurrentPassword);
+    };
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
+
+    const toggleConfirmPasswordVisibility = () => {
+        setShowConfirmPassword(!showConfirmPassword);
+    };
+
+    if (loading) {
+        return <p>Loading account data...</p>;
+    }
+
+    if (error) {
+        return <p>Error: {error}</p>;
+    }
+
+    return (
+    <div className="tenant-register-container ea-home-container" style={{ position: 'relative', zIndex: 2 }}>
+            <img src={process.env.PUBLIC_URL + '/Background/GB.png'} alt="Background" className="ea-home-bg-image" />
+            <div className="ea-bubble b1"></div>
+            <div className="ea-bubble b2"></div>
+            <div className="ea-bubble b3"></div>
+            <div className="ea-bubble b4"></div>
+            <div className="ea-bubble b5"></div>
+            <div className="ea-bubble b6"></div>
+            <div className="ea-bubble b7"></div>
+            <div className="ea-bubble b8"></div>
+            <div className="edit-account-main-row" style={{ position: 'relative', zIndex: 2 }}>
+                <div className="tenant-register-box" style={{ position: 'relative', zIndex: 2 }}>
+                    <h2>Edit Account</h2>
+                    <form onSubmit={handleUpdate} className="tenant-register-form">
+                        <input
+                            type="text"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            placeholder="Username"
+                        />
+                        <div className="password-input-container">
+                            <input
+                                type={showCurrentPassword ? 'text' : 'password'}
+                                value={currentPassword}
+                                onChange={(e) => setCurrentPassword(e.target.value)}
+                                placeholder="Current Password (Required to change username or password)"
+                            />
+                            <span
+                                className="password-toggle-icon"
+                                onClick={toggleCurrentPasswordVisibility}
+                            >
+                                <FontAwesomeIcon icon={showCurrentPassword ? faEye : faEyeSlash} />
+                            </span>
+                        </div>
+                        <div className="password-input-container">
+                            <input
+                                type={showPassword ? 'text' : 'password'}
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                placeholder="New Password (Optional)"
+                            />
+                            <span
+                                className="password-toggle-icon"
+                                onClick={togglePasswordVisibility}
+                            >
+                                <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
+                            </span>
+                        </div>
+                        <div className="password-input-container">
+                            <input
+                                type={showConfirmPassword ? 'text' : 'password'}
+                                value={confirmPassword}
+                                onChange={(e) => setConfirmPassword(e.target.value)}
+                                onBlur={() => setConfirmTouched(true)}
+                                placeholder="Confirm New Password"
+                            />
+                            <span
+                                className="password-toggle-icon"
+                                onClick={toggleConfirmPasswordVisibility}
+                            >
+                                <FontAwesomeIcon icon={showConfirmPassword ? faEye : faEyeSlash} />
+                            </span>
+                        </div>
+                        {confirmTouched && password && password !== confirmPassword && (
+                            <p className="error-message">New passwords do not match</p>
+                        )}
+                        <input
+                            type="text"
+                            value={fullName}
+                            onChange={(e) => setFullName(e.target.value)}
+                            placeholder="Full Name"
+                            required
+                        />
+                        <input
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            placeholder="Email"
+                        />
+                        <input
+                            type="text"
+                            value={contactNumber}
+                            onChange={(e) => setContactNumber(e.target.value)}
+                            placeholder="Contact Number (Optional)"
+                            required
+                        />
+                        <input
+                            type="text"
+                            value={apartmentId}
+                            onChange={(e) => setApartmentId(e.target.value)}
+                            placeholder="Apartment ID (Name or number)"
+                            required
+                        />
+                        <input
+                            type="text"
+                            value={emergencyContact}
+                            onChange={(e) => setEmergencyContact(e.target.value)}
+                            placeholder="Emergency Contact Name (Optional)"
+                        />
+                        <input
+                            type="text"
+                            value={emergencyContactNumber}
+                            onChange={(e) => setEmergencyContactNumber(e.target.value)}
+                            placeholder="Emergency Contact Number (Optional)"
+                        />
+                        <button type="submit">Update</button>
+                    </form>
+                    <button onClick={handleCancel} className="cancel-register-button">Cancel</button>
+                </div>
+                <div className="account-preview-right" style={{ position: 'relative', zIndex: 2 }}>
+                    <div className="account-preview-box" style={{ position: 'relative', zIndex: 2 }}>
+                        <h3>Account Preview</h3>
+                        <p><strong>Username:</strong> {username || <em>Not set</em>}</p>
+                        <p><strong>Full Name:</strong> {fullName || <em>Not set</em>}</p>
+                        <p><strong>Email:</strong> {email || <em>Not set</em>}</p>
+                        <p><strong>Contact Number:</strong> {contactNumber || <em>Not set</em>}</p>
+                        <p><strong>Apartment ID:</strong> {apartmentId || <em>Not set</em>}</p>
+                        <p><strong>Emergency Contact Name:</strong> {emergencyContact || <em>Not set</em>}</p>
+                        <p><strong>Emergency Contact Number:</strong> {emergencyContactNumber || <em>Not set</em>}</p>
+                    </div>
+                    <div className="edit-account-note-box" style={{ position: 'relative', zIndex: 2 }}>
+                        <p style={{ marginTop: "12px", marginBottom: '8px' }}><strong>Note</strong></p>
+                        <ul style={{ textAlign: 'left', paddingLeft: '1.1rem', marginTop: 0 }}>
+                            <li>Please make sure the details you input here are updated and accurate, because this will be used by the admin for identification and communication purposes.</li>
+                            <li>Changing your username requires entering your current password to confirm the change.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            {showMessage && (
+                <div className="modal-overlay" style={{ zIndex: 1002 }}>
+                    <div className={`modal-content ${messageType}`} style={{ position: 'relative', zIndex: 1003 }}>
+                        <h2>{messageType === 'success' ? 'Success!' : 'Error!'}</h2>
+                        <p>{messageText}</p>
+                        <div className="modal-actions">
+                            <button className="modal-button ok" onClick={closeMessage}>OK</button>
+                        </div>
+                    </div>
+                </div>
+            )}
+        </div>
+    );
+};
+
+export default EditAccount;

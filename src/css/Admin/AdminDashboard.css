@@ -1,0 +1,200 @@
+.admin-dashboard-container {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: linear-gradient(120deg, #ffb347 0%, #ff9a9e 40%, #fad0c4 70%, #b084cc 100%);
+  animation: admin-dashboard-bg-move 12s ease-in-out infinite alternate;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.home-bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  opacity: 0.25;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@keyframes admin-dashboard-bg-move {
+  0% {background-position:0% 50%;}
+  50% {background-position:100% 50%;}
+  100% {background-position:0% 50%;}
+}
+
+.admin-dashboard-container .bubble {
+  position: absolute;
+  bottom: -60px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.35);
+  box-shadow: 0 0 12px 2px rgba(255,255,255,0.18);
+  animation: bubble-rise 8s linear infinite;
+  z-index: 0;
+}
+.admin-dashboard-container .bubble.b1 { width: 32px; height: 32px; left: 10vw; animation-delay: 0s; }
+.admin-dashboard-container .bubble.b2 { width: 18px; height: 18px; left: 25vw; animation-delay: 2s; }
+.admin-dashboard-container .bubble.b3 { width: 24px; height: 24px; left: 40vw; animation-delay: 1s; }
+.admin-dashboard-container .bubble.b4 { width: 14px; height: 14px; left: 60vw; animation-delay: 3s; }
+.admin-dashboard-container .bubble.b5 { width: 28px; height: 28px; left: 80vw; animation-delay: 0.5s; }
+.admin-dashboard-container .bubble.b6 { width: 20px; height: 20px; left: 70vw; animation-delay: 4s; }
+.admin-dashboard-container .bubble.b7 { width: 12px; height: 12px; left: 55vw; animation-delay: 2.5s; }
+.admin-dashboard-container .bubble.b8 { width: 22px; height: 22px; left: 35vw; animation-delay: 5s; }
+
+@keyframes bubble-rise {
+  0% { transform: translateY(0) scale(1); opacity: 0.7; }
+  80% { opacity: 0.7; }
+  100% { transform: translateY(-95vh) scale(1.15); opacity: 0; }
+}
+
+.admin-dashboard-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  z-index: 2;
+}
+
+.admin-dashboard-box h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.admin-dashboard-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  z-index: 2;
+}
+
+.admin-dashboard-nav .home-animated-btn {
+  width: 200px;
+  display: inline-block;
+  text-align: center;
+  padding: 12px 20px;
+  border-radius: 8px;
+  color: #fff;
+  background: linear-gradient(90deg, #8f94fb 0%, #4e54c8 100%);
+  box-shadow: 0 4px 24px 0 rgba(76,0,130,0.35), 0 2px 12px #4e54c880;
+  font-weight: 700;
+  text-decoration: none;
+}
+.admin-dashboard-nav .home-animated-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 18px 4px #8f94fb80, 0 2px 16px rgba(0,0,0,0.12);
+}
+
+.admin-dashboard-nav .admin-edit-account-button {
+  background-color: #2196f3;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  width: 200px;
+  display: inline-block;
+  text-align: center;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+}
+.admin-dashboard-nav .admin-edit-account-button:hover {
+  background-color: #1976d2;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px #2196f3, 0 2px 16px rgba(0,0,0,0.12);
+}
+
+.admin-dashboard-button {
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #fff;
+  background: #222;
+  padding: 12px 30px;
+  border-radius: 5px;
+  width: 200px;
+  text-align: center;
+  font-weight: bold;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 0.2s;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+  z-index: 2;
+}
+
+.admin-dashboard-button:hover {
+  background: #333;
+  color: #cee056;
+  transform: scale(1.05);
+  box-shadow: 0 0 18px 4px #cee056, 0 2px 16px rgba(0, 0, 0, 0.12);
+}
+
+.admin-dashboard-logout-button {
+  font-size: 1.2rem;
+  color: #fff;
+  background: #7a4f13;
+  padding: 12px 30px;
+  border-radius: 5px;
+  width: 200px;
+  margin-top: 30px;
+  font-weight: bold;
+  transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+  cursor: pointer;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+  z-index: 2;
+}
+
+.admin-dashboard-logout-button:hover {
+  background: #7a4f13;
+  color: #fff;
+  transform: scale(1.05);
+  box-shadow: 0 0 18px 4px #ebc61d, 0 2px 16px rgba(0, 0, 0, 0.12);
+}
+
+@media (max-width: 700px) {
+  .admin-dashboard-container {
+    padding: 0 8px;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .admin-dashboard-box {
+    padding: 18px 6px;
+    border-radius: 8px;
+    max-width: 99vw;
+    width: 100%;
+    margin: 40px 0;
+  }
+
+  .admin-dashboard-box h1 {
+    font-size: 1.5rem;
+    margin-bottom: 18px;
+  }
+
+  .admin-dashboard-nav {
+    gap: 12px;
+    width: 100%;
+  }
+
+  .admin-dashboard-button,
+  .admin-dashboard-logout-button {
+    width: 100%;
+    font-size: 1rem;
+    padding: 12px 0;
+    border-radius: 8px;
+    margin-top: 0;
+  }
+
+  .admin-dashboard-logout-button {
+    margin-top: 18px;
+  }
+}

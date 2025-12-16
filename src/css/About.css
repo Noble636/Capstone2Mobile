@@ -1,0 +1,268 @@
+.about-container {
+  scrollbar-width: thin;
+  scrollbar-color: #7c2ae8 #e0b0ff;
+}
+
+.about-container::-webkit-scrollbar {
+  width: 10px;
+  background: #e0b0ff;
+}
+.about-container::-webkit-scrollbar-thumb {
+  background: linear-gradient(270deg, #7c2ae8, #b0e0ff, #ffe0b0);
+  border-radius: 8px;
+  animation: scrollbar-thumb-anim 2.5s linear infinite alternate;
+}
+.about-container::-webkit-scrollbar-track {
+  background: #e0b0ff;
+  border-radius: 8px;
+}
+
+@keyframes scrollbar-thumb-anim {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+.about-container {
+  position: relative;
+  min-height: 100vh;
+  max-height: 100vh;
+  width: 100vw;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+  padding: 40px;
+  box-sizing: border-box;
+  gap: 0;
+  background: linear-gradient(270deg, #e0b0ff, #b0e0ff, #ffe0b0, #b0ffe0);
+  background-size: 800% 800%;
+  animation: about-gradient-move 18s ease infinite;
+  scrollbar-width: thin;
+  scrollbar-color: #7c2ae8 #e0b0ff;
+}
+
+@keyframes about-gradient-move {
+  0% {background-position:0% 50%;}
+  50% {background-position:100% 50%;}
+  100% {background-position:0% 50%;}
+}
+
+.about-header {
+  margin-bottom: 18px;
+}
+
+.about-logo {
+  display: block;
+  margin: 0 auto 8px auto;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(80,0,80,0.12);
+}
+
+.about-system-section {
+  background: #fff8fc;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(80,0,80,0.08);
+  padding: 24px 32px;
+  margin-bottom: 24px;
+  max-width: 700px;
+  width: 100%;
+}
+
+.about-features-section {
+  margin-bottom: 28px;
+}
+
+.features-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  justify-content: center;
+  margin-top: 18px;
+}
+
+.feature-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(80,0,80,0.10);
+  padding: 18px 22px;
+  width: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.feature-card:hover {
+  transform: translateY(-4px) scale(1.04);
+  box-shadow: 0 6px 18px rgba(80,0,80,0.18);
+}
+.feature-icon {
+  font-size: 2.2rem;
+  margin-bottom: 8px;
+}
+.feature-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+  color: #7c2ae8;
+}
+.feature-card p {
+  font-size: 0.98rem;
+  color: #555;
+}
+
+.about-team-section {
+  margin-bottom: 24px;
+}
+
+.about-footer {
+  margin-top: 18px;
+  font-size: 1rem;
+  color: #333;
+}
+.about-footer a {
+  color: #7c2ae8;
+  text-decoration: underline;
+}
+
+.about-container .project-description {
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin: 0 auto 30px;
+  color: #333;
+}
+
+.about-container .team-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.about-container .member-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.about-container .member-photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.about-container .member-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.about-container .member-card p {
+  font-size: 1rem;
+  color: #777;
+}
+
+.about-container .about-back-button-container {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.about-container .about-back-button {
+  text-decoration: none;
+  font-size: 1.3rem;
+  color: blue;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: transparent;
+  border: none;
+  transition: color 0.3s, box-shadow 0.3s, transform 0.2s;
+}
+
+.about-container .about-back-button:hover {
+  color: #0056b3;
+  box-shadow: 0 0 8px rgba(0, 0, 255, 0.7);
+  transform: scale(1.05);
+}
+
+@media (max-width: 600px) {
+  .about-container {
+    padding: 12px;
+    min-height: 100vh;
+    height: auto;
+    position: relative;
+  }
+
+  .about-system-section {
+    padding: 12px 8px;
+    max-width: 98vw;
+  }
+
+  .features-grid {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .feature-card {
+    width: 98vw;
+    max-width: 340px;
+    padding: 12px 8px;
+  }
+
+  .about-footer {
+    font-size: 0.95rem;
+  }
+
+  .about-container .project-description {
+    font-size: 1rem;
+    max-width: 98vw;
+    margin-bottom: 18px;
+  }
+
+  .about-container .team-grid {
+    flex-direction: column;
+    gap: 18px;
+    margin-bottom: 14px;
+    align-items: center;
+  }
+
+  .about-container .member-card {
+    padding: 12px;
+    border-radius: 10px;
+    width: 98vw;
+    max-width: 340px;
+  }
+
+  .about-container .member-photo {
+    width: 90px;
+    height: 90px;
+    margin-bottom: 10px;
+  }
+
+  .about-container .member-card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 4px;
+  }
+
+  .about-container .member-card p {
+    font-size: 0.95rem;
+  }
+
+  .about-container .about-back-button-container {
+    position: static;
+    margin-bottom: 18px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .about-container .about-back-button {
+    font-size: 1rem;
+    padding: 8px 14px;
+    border-radius: 5px;
+  }
+}
