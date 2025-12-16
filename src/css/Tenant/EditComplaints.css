@@ -228,17 +228,21 @@
 }
 
 .edit-complaints-container .back-button {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    text-decoration: none;
-    font-size: 1.2rem;
+    display: block;
+    position: static;
+    margin-bottom: 14px;
+    width: fit-content;
+    font-size: 1rem;
+    padding: 10px 18px 10px 10px;
+    border-radius: 8px;
+    left: unset;
+    top: unset;
+    background-color: #7a4f13 !important;
     color: #fff !important;
     font-weight: bold;
-    padding: 8px 16px;
-    background-color: #7a4f13 !important;
+    text-align: left;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     border: none;
-    border-radius: 5px;
     transition: box-shadow 0.3s, transform 0.2s;
 }
 
@@ -459,14 +463,17 @@
   }
 
   .edit-complaints-container .back-button {
-    position: static;
+    margin-left: 0;
+    margin-right: auto;
     margin-bottom: 14px;
-    width: 100%;
+    width: fit-content;
     font-size: 1rem;
-    padding: 10px 0;
+    padding: 10px 18px 10px 10px;
     border-radius: 8px;
     left: unset;
     top: unset;
+    display: block;
+    position: static;
   }
 
   .edit-complaint-message-box > div {

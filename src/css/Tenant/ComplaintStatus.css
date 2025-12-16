@@ -157,6 +157,8 @@
     height: 32px;
     top: 10px;
     left: 10px;
+    margin-left: 0;
+    margin-right: auto;
   }
 
   .complaint-status-card {

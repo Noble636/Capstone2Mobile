@@ -174,14 +174,6 @@ const EditComplaints = () => {
     return (
         <div className="edit-complaints-container ec-home-container">
             <img src={process.env.PUBLIC_URL + '/Background/GB.png'} alt="Background" className="ec-home-bg-image" />
-            <div className="ec-bubble b1"></div>
-            <div className="ec-bubble b2"></div>
-            <div className="ec-bubble b3"></div>
-            <div className="ec-bubble b4"></div>
-            <div className="ec-bubble b5"></div>
-            <div className="ec-bubble b6"></div>
-            <div className="ec-bubble b7"></div>
-            <div className="ec-bubble b8"></div>
             <Link to="/submitcomplaints" className="back-button top-left">&#x2B05; Back</Link>
             <h1>Edit Your Complaints</h1>
             <div className="tenant-info-box">
