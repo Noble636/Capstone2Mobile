@@ -170,8 +170,12 @@
     background: #f4f4f6;
     color: #333;
     border: 1px solid #e6e6e9;
+    width: 100%;
+    margin-top: 8px;
+    font-weight: bold;
+    text-align: center;
 }
-.admin-edit-btn.back:hover { background: #eef0f3; }
+.admin-edit-btn.back:hover { background: #e0e0e0; }
 .admin-edit-btn.revert {
     background: #dc3545;
     color: #fff;
@@ -249,9 +253,10 @@
     min-width: 100vw;
     padding: 0;
     display: flex;
-    align-items: center;
+    align-items: flex-start; /* Change to flex-start for natural scroll */
     justify-content: center;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
   .admin-edit-rental-bg-image {
     width: 100vw;
@@ -263,41 +268,24 @@
   }
   .admin-edit-rental-wrapper {
     width: 100vw;
-    height: 100vh;
     min-width: 100vw;
-    min-height: 100vh;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     padding: 0;
+    height: auto;
+    min-height: 0;
   }
   .admin-edit-rental-panel {
-    width: 99vw;
+    width: 98vw;
     max-width: 99vw;
     min-width: 0;
-    max-height: 95vh;
+    max-height: none;
     padding: 8px 2px;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-    overflow: auto;
-  }
-  .admin-edit-columns {
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 10px;
-  }
-  .admin-column {
-    min-width: 0;
-  }
-  .admin-edit-textarea {
-    min-height: 80px;
-    font-size: 0.95rem;
-    padding: 8px;
-  }
-  .admin-preview-box {
-    min-height: 60px;
-    font-size: 0.95rem;
-    padding: 8px;
+    overflow: visible;
+    margin: 16px 0;
   }
   .admin-edit-actions {
     flex-direction: column;
@@ -309,10 +297,5 @@
     font-size: 1rem;
     padding: 10px 0;
     border-radius: 8px;
-  }
-  .modal-content.admin-modal {
-    width: 98vw;
-    max-width: 99vw;
-    padding: 12px 4px;
   }
 }
