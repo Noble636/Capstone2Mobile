@@ -115,14 +115,6 @@ const ManageAccounts = () => {
             return (
                 <div className="manage-accounts-container" style={{ position: 'relative', overflow: 'hidden', minHeight: '100vh', width: '100vw', background: 'linear-gradient(120deg, #ffb347 0%, #ff9a9e 40%, #fad0c4 70%, #b084cc 100%)', animation: 'admin-dashboard-bg-move 12s ease-in-out infinite alternate' }}>
                     <img src="/Background/GB.png" alt="Background" className="home-bg-image" />
-                    <div className="bubble b1" />
-                    <div className="bubble b2" />
-                    <div className="bubble b3" />
-                    <div className="bubble b4" />
-                    <div className="bubble b5" />
-                    <div className="bubble b6" />
-                    <div className="bubble b7" />
-                    <div className="bubble b8" />
                     <div className="manage-accounts-box">
                         <h1>Manage Tenant Accounts</h1>
                         <button className="back_to_dashboard_manage_accounts_button" onClick={handleBack}>

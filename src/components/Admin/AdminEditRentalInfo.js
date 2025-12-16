@@ -49,14 +49,6 @@ const AdminEditRentalInfo = () => {
         <div className="admin-edit-rental-page">
             {/* Background elements */}
             <img src={process.env.PUBLIC_URL + '/Background/GB.png'} alt="Background" className="admin-edit-rental-bg-image" />
-            <div className="bubble b1" />
-            <div className="bubble b2" />
-            <div className="bubble b3" />
-            <div className="bubble b4" />
-            <div className="bubble b5" />
-            <div className="bubble b6" />
-            <div className="bubble b7" />
-            <div className="bubble b8" />
 
             <div className="admin-edit-rental-wrapper">
                 <div className="admin-edit-rental-panel">

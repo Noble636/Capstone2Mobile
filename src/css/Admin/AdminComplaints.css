@@ -112,6 +112,7 @@
     text-align: center;
     display: flex;
     align-items: center;
+    justify-content: center; /* Add this line to center content horizontally */
     gap: 8px;
     transition: box-shadow 0.3s, transform 0.2s;
 }

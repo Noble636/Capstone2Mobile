@@ -4,31 +4,66 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  justify-content: center; /* Add this for vertical centering */
   position: relative;
   background: linear-gradient(120deg, #ffb347 0%, #ff9a9e 40%, #fad0c4 70%, #b084cc 100%);
-  animation: admin-dashboard-bg-move 12s ease-in-out infinite alternate;
+  /* animation: admin-dashboard-bg-move 12s ease-in-out infinite alternate; */ /* Remove or comment out */
   overflow: hidden;
   font-family: Arial, sans-serif;
   text-align: center;
+  box-sizing: border-box;
+  padding: 0;
 }
 
 .home-bg-image {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100vw;   /* or 100% if you prefer */
+  height: 100vh;  /* or 100% if you prefer */
   object-fit: cover;
   opacity: 0.25;
   z-index: 0;
   pointer-events: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@keyframes admin-dashboard-bg-move {
-  0% {background-position:0% 50%;}
-  50% {background-position:100% 50%;}
-  100% {background-position:0% 50%;}
+.admin-visitor-logs-box {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 95vw;
+  max-width: 400px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+  position: relative;
+  border: 2.5px solid #000;
+  margin: 0;
+}
+
+/* Center the Back to Dashboard button content */
+.admin-visitor-logs-box .back_to_dashboard_visitor_logs_button {
+  background-color: #7a4f13;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Add this line */
+  gap: 8px;
+  transition: box-shadow 0.3s, transform 0.2s;
+  width: 100%; /* For mobile, ensures full width */
+  text-align: center;
 }
 
 .admin-visitor-logs-container .bubble {
@@ -88,8 +123,11 @@
   margin-bottom: 20px;
   display: flex;
   align-items: center;
+  justify-content: center; /* Add this line */
   gap: 8px;
   transition: box-shadow 0.3s, transform 0.2s;
+  width: 100%; /* For mobile, ensures full width */
+  text-align: center;
 }
 
 .admin-visitor-logs-box .back_to_dashboard_visitor_logs_button:hover {
