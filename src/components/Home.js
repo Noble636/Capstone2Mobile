@@ -31,111 +31,106 @@ const Home = () => {
   const currentApartment = apartmentImages[currentIdx];
 
   return (
-    <div className="home-container">
-      <img src={process.env.PUBLIC_URL + '/Background/GB.png'} alt="Background" className="home-bg-image" />
-      <div className="bubble b1"></div>
-      <div className="bubble b2"></div>
-      <div className="bubble b3"></div>
-      <div className="bubble b4"></div>
-      <div className="bubble b5"></div>
-      <div className="bubble b6"></div>
-      <div className="bubble b7"></div>
-      <div className="bubble b8"></div>
-      {showDesktopPopup && (
-        <div style={{
-          position: 'fixed',
-          top: 0, left: 0, right: 0, bottom: 0,
-          background: 'rgba(0,0,0,0.7)',
-          zIndex: 9999,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
-        }}>
+    <>
+      <div className="home-container">
+        <img src={process.env.PUBLIC_URL + '/Background/GB.png'} alt="Background" className="home-bg-image" />
+        <div className="home-bg-overlay"></div>
+        {showDesktopPopup && (
           <div style={{
-            background: 'linear-gradient(120deg, #ffb347 0%, #ff9a9e 40%, #fad0c4 70%, #b084cc 100%)',
-            color: '#181818',
-            borderRadius: 20,
-            border: '2px solid #fff',
-            padding: '32px 24px',
-            maxWidth: 340,
-            width: '90%',
-            textAlign: 'center',
-            boxShadow: '0 4px 24px rgba(44,62,80,0.18)',
-            position: 'relative'
+            position: 'fixed',
+            top: 0, left: 0, right: 0, bottom: 0,
+            background: 'rgba(0,0,0,0.7)',
+            zIndex: 9999,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
           }}>
-            <button
-              onClick={() => setShowDesktopPopup(false)}
-              style={{
-                position: 'absolute',
-                top: 10,
-                right: 14,
-                background: 'transparent',
-                border: 'none',
-                fontSize: 22,
-                color: '#181818',
-                cursor: 'pointer',
-                fontWeight: 700,
-                lineHeight: 1
-              }}
-              aria-label="Close"
-            >
-              ×
-            </button>
-            <h2 style={{
-              marginBottom: 16,
-              fontWeight: 900,
-              letterSpacing: 1,
-              textShadow: '2px 4px 16px #b084cc88, 0 2px 8px #fad0c488'
-            }}>Mobile Only</h2>
-            <p style={{ marginBottom: 16, fontWeight: 500 }}>
-              This version is for mobile browsing only.<br />
-              Please use the web version for desktop.
-            </p>
-            <button
-              onClick={() => { window.location.href = "https://apartmentmaintenance.vercel.app"; }}
-              style={{
-                width: '100%',
-                margin: '8px auto 0 auto',
-                padding: '14px 0',
-                background: '#2d98da',
-                color: '#fff',
-                borderRadius: 12,
-                textDecoration: 'none',
-                fontWeight: 700,
-                fontSize: 16,
-                boxShadow: '0 2px 8px rgba(44,62,80,0.12)',
-                border: 'none',
-                cursor: 'pointer',
-                transition: 'background 0.2s'
-              }}
-            >
-              apartmentmaintenance.vercel.app
-            </button>
-          </div>
-        </div>
-      )}
-      <div className="home-content-wrapper">
-        <div className="home-left">
-          <h1 className="home-main-title">Apartment Maintenance</h1>
-          <p className="home-subtitle home-subtitle-separate">Web-based Tenant Complaint and Security Management System</p>
-          <div className="home-nav">
-            <div className="home-btn-row">
-              <Link to="/about" className="home-animated-btn">About</Link>
-              <Link to="/privacy-policy" className="home-animated-btn">Privacy Policy</Link>
-              <Link to="/contact-us" className="home-animated-btn">Contact Us</Link>
-            </div>
-            <div className="home-btn-row">
-              <Link to="/rental-info" className="home-animated-btn">Rental Information</Link>
-              <Link to="/admin-login" className="home-animated-btn">Admin Login</Link>
-              <Link to="/tenant-login" className="home-animated-btn">Tenant Login</Link>
+            <div style={{
+              background: 'linear-gradient(120deg, #ffb347 0%, #ff9a9e 40%, #fad0c4 70%, #b084cc 100%)',
+              color: '#181818',
+              borderRadius: 20,
+              border: '2px solid #fff',
+              padding: '32px 24px',
+              maxWidth: 340,
+              width: '90%',
+              textAlign: 'center',
+              boxShadow: '0 4px 24px rgba(44,62,80,0.18)',
+              position: 'relative'
+            }}>
+              <button
+                onClick={() => setShowDesktopPopup(false)}
+                style={{
+                  position: 'absolute',
+                  top: 10,
+                  right: 14,
+                  background: 'transparent',
+                  border: 'none',
+                  fontSize: 22,
+                  color: '#181818',
+                  cursor: 'pointer',
+                  fontWeight: 700,
+                  lineHeight: 1
+                }}
+                aria-label="Close"
+              >
+                ×
+              </button>
+              <h2 style={{
+                marginBottom: 16,
+                fontWeight: 900,
+                letterSpacing: 1,
+                textShadow: '2px 4px 16px #b084cc88, 0 2px 8px #fad0c488'
+              }}>Mobile Only</h2>
+              <p style={{ marginBottom: 16, fontWeight: 500 }}>
+                This version is for mobile browsing only.<br />
+                Please use the web version for desktop.
+              </p>
+              <button
+                onClick={() => { window.location.href = "https://apartmentmaintenance.vercel.app"; }}
+                style={{
+                  width: '100%',
+                  margin: '8px auto 0 auto',
+                  padding: '14px 0',
+                  background: '#2d98da',
+                  color: '#fff',
+                  borderRadius: 12,
+                  textDecoration: 'none',
+                  fontWeight: 700,
+                  fontSize: 16,
+                  boxShadow: '0 2px 8px rgba(44,62,80,0.12)',
+                  border: 'none',
+                  cursor: 'pointer',
+                  transition: 'background 0.2s'
+                }}
+              >
+                apartmentmaintenance.vercel.app
+              </button>
             </div>
           </div>
-        </div>
-        <div className="home-right-frame">
-          <img src={currentApartment.src} alt={currentApartment.label} className="home-apartment-img-full" />
+        )}
+        <div className="home-content-wrapper">
+          <div className="home-left">
+            <h1 className="home-main-title">Apartment Maintenance</h1>
+            <p className="home-subtitle home-subtitle-separate">Web-based Tenant Complaint and Security Management System</p>
+            <div className="home-nav">
+              <div className="home-btn-row">
+                <Link to="/about" className="home-animated-btn">About</Link>
+                <Link to="/privacy-policy" className="home-animated-btn">Privacy Policy</Link>
+                <Link to="/contact-us" className="home-animated-btn">Contact Us</Link>
+              </div>
+              <div className="home-btn-row">
+                <Link to="/rental-info" className="home-animated-btn">Rental Information</Link>
+                <Link to="/admin-login" className="home-animated-btn">Admin Login</Link>
+                <Link to="/tenant-login" className="home-animated-btn">Tenant Login</Link>
+              </div>
+            </div>
+          </div>
+          <div className="home-right-frame">
+            <img src={currentApartment.src} alt={currentApartment.label} className="home-apartment-img-full" />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
