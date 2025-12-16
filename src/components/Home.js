@@ -94,9 +94,9 @@ const Home = () => {
             <button
               onClick={() => { window.location.href = "https://apartmentmaintenance.vercel.app"; }}
               style={{
-                display: 'block',
+                width: '100%',
                 margin: '8px auto 0 auto',
-                padding: '12px 24px',
+                padding: '14px 0',
                 background: '#2d98da',
                 color: '#fff',
                 borderRadius: 12,
