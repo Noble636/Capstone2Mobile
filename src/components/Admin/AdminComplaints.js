@@ -122,14 +122,6 @@ const AdminComplaints = () => {
     return (
         <div className="admin-complaints-container" style={{ position: 'relative', overflow: 'hidden', minHeight: '100vh', width: '100vw', background: 'linear-gradient(120deg, #ffb347 0%, #ff9a9e 40%, #fad0c4 70%, #b084cc 100%)', animation: 'admin-dashboard-bg-move 12s ease-in-out infinite alternate' }}>
               <img src="/Background/GB.png" alt="Background" className="home-bg-image" style={{zIndex: 0}} />
-              <div className="bubble b1" style={{zIndex: 0}} />
-              <div className="bubble b2" style={{zIndex: 0}} />
-              <div className="bubble b3" style={{zIndex: 0}} />
-              <div className="bubble b4" style={{zIndex: 0}} />
-              <div className="bubble b5" style={{zIndex: 0}} />
-              <div className="bubble b6" style={{zIndex: 0}} />
-              <div className="bubble b7" style={{zIndex: 0}} />
-              <div className="bubble b8" style={{zIndex: 0}} />
               <div className="admin-complaints-box" style={{zIndex: 2, position: 'relative'}}>
                 <h1>Admin Complaints</h1>
                 <button className="back_to_dashboard_button" onClick={handleBack}>

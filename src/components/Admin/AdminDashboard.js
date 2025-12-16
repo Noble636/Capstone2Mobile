@@ -12,14 +12,6 @@ const AdminDashboard = () => {
   return (
     <div className="admin-dashboard-container">
       <img src={process.env.PUBLIC_URL + '/Background/GB.png'} alt="Background" className="home-bg-image" />
-      <div className="bubble b1"></div>
-      <div className="bubble b2"></div>
-      <div className="bubble b3"></div>
-      <div className="bubble b4"></div>
-      <div className="bubble b5"></div>
-      <div className="bubble b6"></div>
-      <div className="bubble b7"></div>
-      <div className="bubble b8"></div>
       <div className="admin-dashboard-box">
         <h1>Admin Dashboard</h1>
         
