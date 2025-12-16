@@ -52,12 +52,15 @@ const Home = () => {
           justifyContent: 'center'
         }}>
           <div style={{
-            background: '#fff',
-            borderRadius: 16,
+            background: 'linear-gradient(120deg, #ffb347 0%, #ff9a9e 40%, #fad0c4 70%, #b084cc 100%)',
+            color: '#181818',
+            borderRadius: 20,
+            border: '2px solid #fff',
             padding: '32px 24px',
-            maxWidth: 320,
+            maxWidth: 340,
+            width: '90%',
             textAlign: 'center',
-            boxShadow: '0 4px 24px rgba(0,0,0,0.18)',
+            boxShadow: '0 4px 24px rgba(44,62,80,0.18)',
             position: 'relative'
           }}>
             <button
@@ -78,28 +81,36 @@ const Home = () => {
             >
               ×
             </button>
-            <h2 style={{ marginBottom: 16 }}>Mobile Only</h2>
-            <p style={{ marginBottom: 16 }}>
+            <h2 style={{
+              marginBottom: 16,
+              fontWeight: 900,
+              letterSpacing: 1,
+              textShadow: '2px 4px 16px #b084cc88, 0 2px 8px #fad0c488'
+            }}>Mobile Only</h2>
+            <p style={{ marginBottom: 16, fontWeight: 500 }}>
               This version is for mobile browsing only.<br />
               Please use the web version for desktop.
             </p>
-            <a
-              href="https://apartmentmaintenance.vercel.app"
+            <button
+              onClick={() => { window.location.href = "https://apartmentmaintenance.vercel.app"; }}
               style={{
                 display: 'block',
                 margin: '8px auto 0 auto',
-                padding: '10px 20px',
+                padding: '12px 24px',
                 background: '#2d98da',
                 color: '#fff',
-                borderRadius: 8,
+                borderRadius: 12,
                 textDecoration: 'none',
-                fontWeight: 600
+                fontWeight: 700,
+                fontSize: 16,
+                boxShadow: '0 2px 8px rgba(44,62,80,0.12)',
+                border: 'none',
+                cursor: 'pointer',
+                transition: 'background 0.2s'
               }}
-              target="_blank"
-              rel="noopener noreferrer"
             >
               apartmentmaintenance.vercel.app
-            </a>
+            </button>
           </div>
         </div>
       )}
