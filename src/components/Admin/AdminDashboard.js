@@ -12,6 +12,14 @@ const AdminDashboard = () => {
   return (
     <div className="admin-dashboard-container">
       <img src={process.env.PUBLIC_URL + '/Background/GB.png'} alt="Background" className="home-bg-image" />
+      <div className="bubble b1"></div>
+      <div className="bubble b2"></div>
+      <div className="bubble b3"></div>
+      <div className="bubble b4"></div>
+      <div className="bubble b5"></div>
+      <div className="bubble b6"></div>
+      <div className="bubble b7"></div>
+      <div className="bubble b8"></div>
       <div className="admin-dashboard-box">
         <h1>Admin Dashboard</h1>
         
@@ -24,6 +32,9 @@ const AdminDashboard = () => {
           </Link>
           <Link to="/admin-edit-rental" className="admin-dashboard-button">
             Edit Rental Information
+          </Link>
+          <Link to="/admin/available-units" className="admin-dashboard-button">
+            Post Available Unit
           </Link>
           <Link to="/admin-manage-accounts" className="admin-dashboard-button">
             Manage Tenant Accounts

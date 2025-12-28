@@ -6,7 +6,7 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 const AdminRegister = () => {
     const navigate = useNavigate();
-    const [developerTokenInput, setDeveloperTokenInput] = useState('');
+    const [tokenInput, setTokenInput] = useState('');
     const [isTokenVerified, setIsTokenVerified] = useState(false);
     const [fullName, setFullName] = useState('');
     const [email, setEmail] = useState('');
@@ -17,16 +17,30 @@ const AdminRegister = () => {
     const [showSuccessPopup, setShowSuccessPopup] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-    const CORRECT_DEVELOPER_TOKEN = 'Token';
+    const [adminToken, setAdminToken] = useState('');
+    const [showAdminToken, setShowAdminToken] = useState(false);
 
-    const handleTokenSubmit = (e) => {
+    // FIX: Use backend to verify token
+    const handleTokenSubmit = async (e) => {
         e.preventDefault();
-        if (developerTokenInput === CORRECT_DEVELOPER_TOKEN) {
-            setIsTokenVerified(true);
-            setMessage('');
-        } else {
-            setMessage('Incorrect Developer Token. Registration form will not be shown.');
-            setDeveloperTokenInput('');
+        setMessage('');
+        try {
+            const response = await fetch('https://tenantportal-backend.onrender.com/api/admin/forgot-password/verify-token', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ token: tokenInput }),
+            });
+            const data = await response.json();
+            if (response.ok) {
+                setIsTokenVerified(true);
+                setMessage('');
+            } else {
+                setMessage(data.message || 'Incorrect Developer or Admin Token. Registration form will not be shown.');
+                setTokenInput('');
+                setIsTokenVerified(false);
+            }
+        } catch (error) {
+            setMessage('Failed to connect to the server.');
             setIsTokenVerified(false);
         }
     };
@@ -47,7 +61,7 @@ const AdminRegister = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ fullName, email, username, password }),
+                body: JSON.stringify({ fullName, email, username, password, adminToken }),
             });
             const data = await response.json();
             if (response.ok) {
@@ -85,10 +99,21 @@ const AdminRegister = () => {
     const toggleConfirmPasswordVisibility = () => {
         setShowConfirmPassword(!showConfirmPassword);
     };
+    const toggleAdminTokenVisibility = () => {
+        setShowAdminToken(!showAdminToken);
+    };
 
     return (
-        <div className="admin-register-container" style={{ position: 'relative', overflow: 'hidden', minHeight: '100vh', width: '100vw', background: 'linear-gradient(120deg, #ffb347 0%, #ff9a9e 40%, #fad0c4 70%, #b084cc 100%)' }}>
+        <div className="admin-register-container" style={{ position: 'relative', overflow: 'hidden', minHeight: '100vh', width: '100vw', background: 'linear-gradient(120deg, #ffb347 0%, #ff9a9e 40%, #fad0c4 70%, #b084cc 100%)', animation: 'admin-dashboard-bg-move 12s ease-in-out infinite alternate' }}>
             <img src="/Background/GB.png" alt="Background" className="home-bg-image" />
+            <div className="bubble b1" />
+            <div className="bubble b2" />
+            <div className="bubble b3" />
+            <div className="bubble b4" />
+            <div className="bubble b5" />
+            <div className="bubble b6" />
+            <div className="bubble b7" />
+            <div className="bubble b8" />
             {showSuccessPopup && (
                 <div className="admin-register-success-popup">
                     <p>Registration successful!</p>
@@ -107,13 +132,13 @@ const AdminRegister = () => {
                         <p className="admin-register-info-text">
                             <strong style={{ color: 'red' }}>Please don't register here if you are not an Admin.</strong>
                             <br />
-                            Please input the Developers Token Provided by the Developers of this system to enable the Register of an account with admin privilages.
+                            Please input the <b>Developer Token</b> or your <b>Admin Token</b> to enable the registration of an account with admin privileges.
                         </p>
                         <input
                             type="password"
-                            placeholder="Developer Token"
-                            value={developerTokenInput}
-                            onChange={(e) => setDeveloperTokenInput(e.target.value)}
+                            placeholder="Developer or Admin Token"
+                            value={tokenInput}
+                            onChange={(e) => setTokenInput(e.target.value)}
                             required
                         />
                         <button type="submit">Verify Token</button>
@@ -172,6 +197,21 @@ const AdminRegister = () => {
                             <span className="admin-register-password-toggle-icon" onClick={toggleConfirmPasswordVisibility}>
                                 <FontAwesomeIcon icon={showConfirmPassword ? faEyeSlash : faEye} />
                             </span>
+                        </div>
+                        <p className="admin-register-info-text" style={{marginTop: '10px', marginBottom: '5px'}}>
+                          This is your <b>Admin Token</b>. You will use this for sensitive actions and password recovery. Please keep it safe and do not share it with others.
+                        </p>
+                        <div className="admin-register-password-input-wrapper">
+                          <input
+                            type={showAdminToken ? 'text' : 'password'}
+                            placeholder="Admin Token"
+                            value={adminToken}
+                            onChange={(e) => setAdminToken(e.target.value)}
+                            required
+                          />
+                          <span className="admin-register-password-toggle-icon" onClick={toggleAdminTokenVisibility}>
+                            <FontAwesomeIcon icon={showAdminToken ? faEyeSlash : faEye} />
+                          </span>
                         </div>
                         <button type="submit">Register Admin Account</button>
                         <button type="button" onClick={handleCancel} className="admin-register-cancel-button">

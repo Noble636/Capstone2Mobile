@@ -1,48 +1,33 @@
+/* Pure mobile-first design for AdminComplaints */
+
 .admin-complaints-container {
     min-height: 100vh;
     width: 100vw;
     display: flex;
-    flex-direction: column;      /* Ensure column direction */
-    align-items: center;         /* Center horizontally */
-    justify-content: center;     /* Center vertically */
+    flex-direction: column;
+    align-items: center;
     position: relative;
     background: linear-gradient(120deg, #ffb347 0%, #ff9a9e 40%, #fad0c4 70%, #b084cc 100%);
-    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
     font-family: Arial, sans-serif;
     text-align: center;
-    box-sizing: border-box;      /* Prevent overflow from padding */
-    padding: 0;                  /* Remove horizontal padding */
+    padding-top: 16px;
+    padding-bottom: 16px;
+    overflow-x: hidden;
 }
 
-.admin-complaints-container::-webkit-scrollbar {
-    width: 10px;
-    background: #e0b0ff;
-}
-.admin-complaints-container::-webkit-scrollbar-thumb {
-    background: linear-gradient(270deg, #7c2ae8, #b0e0ff, #ffe0b0);
-    border-radius: 8px;
-    animation: scrollbar-thumb-anim 2.5s linear infinite alternate;
-}
-.admin-complaints-container::-webkit-scrollbar-track {
-    background: #e0b0ff;
-    border-radius: 8px;
-}
-@keyframes scrollbar-thumb-anim {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 100% 50%; }
-}
-
-/* Background image fix */
 .home-bg-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.25;
-  z-index: 0;
-  pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    opacity: 0.18;
+    z-index: 0;
+    pointer-events: none;
 }
 
 @keyframes admin-dashboard-bg-move {
@@ -76,59 +61,50 @@
 }
 
 .admin-complaints-box {
+    background-color: #fff;
+    padding: 12px 4px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    width: 98vw;
+    max-width: 99vw;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    margin: 0 auto;
+    position: relative;
     z-index: 2;
-    box-sizing: border-box;
-    margin: 0;
-    width: 95vw;
-    max-width: 400px;
-    padding: 24px 12px;
 }
 
 .admin-complaints-box h1 {
-    font-size: 2.5rem;
+    font-size: 1.3rem;
     color: #333;
     text-align: center;
-    margin-top: 0;
+    margin: 0 0 12px 0;
 }
 
-.admin-complaints-box .back_to_dashboard_button {
+.back_to_dashboard_button {
     background-color: #7a4f13;
     color: #fff;
     border: none;
-    border-radius: 10px;
-    padding: 10px 20px;
-    font-size: 1.2rem;
+    border-radius: 8px;
+    padding: 10px 0;
+    font-size: 1rem;
     cursor: pointer;
-    margin-bottom: 20px;
-    align-self: center;
+    margin-bottom: 14px;
+    width: 100%;
     text-align: center;
     display: flex;
     align-items: center;
-    justify-content: center; /* Add this line to center content horizontally */
     gap: 8px;
-    transition: box-shadow 0.3s, transform 0.2s;
-}
-
-.admin-complaints-box .back_to_dashboard_button:hover {
-    background-color: #7a4f13;
-    color: #fff;
-    transform: scale(1.05);
-    box-shadow: 0 0 18px 4px #ebc61d, 0 2px 16px rgba(0,0,0,0.12);
+    justify-content: center;
 }
 
 .complaints-nav {
     display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 20px;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 12px;
     width: 100%;
 }
 
@@ -136,112 +112,104 @@
     background-color: #007bff;
     color: white;
     border: none;
-    padding: 12px 20px;
-    border-radius: 5px;
-    font-size: 1.2rem;
+    padding: 10px 0;
+    border-radius: 8px;
+    font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s;
+    width: 100%;
+    margin-bottom: 0;
 }
 
-.complaints-nav-button:hover {
-    background-color: #0056b3;
+.export-excel-btn {
+    background: #222;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    font-size: 1rem;
+    padding: 10px 0;
+    margin-bottom: 12px;
+    cursor: pointer;
 }
 
 .complaints-list,
 .complaints-log {
-    margin-top: 20px;
+    margin-top: 8px;
     width: 100%;
 }
 
-.complaint-item {
-    background-color: white;
-    padding: 30px;
+.complaint-item,
+.complaint-log-item {
+    background-color: #fff;
+    padding: 12px;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     width: 100%;
-    max-width: 800px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin-top: 10px;
-    font-size: 1rem;
+    align-items: flex-start;
+    margin-top: 8px;
+    font-size: 0.98rem;
     position: relative;
     z-index: 2;
-    border: 2.5px solid #000;
+    border: 2px solid #000;
 }
 
-.complaint-item:hover {
-    background-color: #f1f1f1;
+.complaint-summary {
+    font-size: 1rem;
+    margin-bottom: 6px;
+}
+
+.complaint-details {
+    font-size: 0.95rem;
+    width: 100%;
 }
 
 .message-textarea {
     width: 100%;
-    min-width: 0;
-    max-width: 100%;
-    padding: 10px;
+    font-size: 0.95rem;
+    padding: 8px;
     border: 1px solid #ccc;
     border-radius: 8px;
     resize: none;
     font-family: inherit;
-    font-size: 1rem;
     color: #333;
     box-sizing: border-box;
-}
-
-.message-textarea::placeholder {
-    color: grey;
+    margin-top: 8px;
 }
 
 .complaint-actions {
     display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-    margin-top: 10px;
-    align-items: center;
+    flex-direction: column;
+    gap: 8px;
+    align-items: stretch;
+    margin-top: 8px;
+    width: 100%;
 }
 
 .complaint-actions button {
-    padding: 8px 15px;
-    border: none;
-    border-radius: 5px;
+    width: 100%;
     font-size: 1rem;
+    padding: 8px 0;
+    border-radius: 8px;
+    border: none;
     cursor: pointer;
-    margin: 0;
 }
 
-.complaint-actions .mark_as_attended_button {
+.mark_as_attended_button {
     background-color: #28a745;
     color: white;
 }
 
-.complaint-actions .mark_as_attended_button:hover {
-    background-color: #218838;
-}
-
-.complaint-actions .decline_complaint_button {
-    background-color: #dc3545 !important;
-    color: #fff !important;
-    border: none !important;
-    transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 0.2s;
-}
-.complaint-actions .decline_complaint_button:hover {
-    background-color: #b30021 !important;
-    color: #fff !important;
-}
-
-.complaint-log-item {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    border: 2.5px solid #000;
-    box-shadow: 0 2px 12px 0 rgba(34,34,34,0.08);
+.decline_complaint_button {
+    background-color: #dc3545;
+    color: #fff;
 }
 
 .complaint-log-item p {
     margin: 5px 0;
-    font-size: 1rem;
+    font-size: 0.98rem;
 }
 
 .confirmation-popup {
@@ -250,171 +218,128 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
-    padding: 20px;
+    padding: 14px 6px;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.18);
     z-index: 1000;
     text-align: center;
-    border: 2.5px solid #000;
+    border: 2px solid #000;
+    width: 95vw;
+    min-width: unset;
 }
 
 .confirmation-popup p {
-    font-size: 1.2rem;
-    margin-bottom: 15px;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
     color: #333;
 }
 
 .confirmation-buttons {
     display: flex;
-    justify-content: center;
-    gap: 15px;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
 }
 
 .confirmation-buttons button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
+    width: 100%;
     font-size: 1rem;
+    padding: 10px 0;
+    border-radius: 8px;
+    border: none;
     cursor: pointer;
-    transition: background-color 0.3s;
 }
 
-.confirmation-buttons .confirm-button {
+.confirm-button {
     background-color: #28a745;
     color: white;
 }
 
-.confirmation-buttons .confirm-button:hover {
-    background-color: #1e7e34;
-}
-
-.confirmation-buttons .cancel-button {
+.cancel-button {
     background-color: #dc3545;
     color: white;
 }
 
-.confirmation-buttons .cancel-button:hover {
-    background-color: #c82333;
+/* Lightbox for images */
+.admin-image-lightbox {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-
-.complaints-nav-button,
-.complaint-actions .mark_as_attended_button,
-.complaint-actions .decline_complaint_button,
-.confirmation-buttons .confirm-button,
-.confirmation-buttons .cancel-button {
-    background: #222;
+.admin-image-lightbox-inner {
+    position: relative;
+    background: #fff;
+    border-radius: 8px;
+    padding: 8px;
+    max-width: 95vw;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.admin-image-lightbox img {
+    max-width: 90vw;
+    max-height: 70vh;
+    border-radius: 6px;
+}
+.admin-image-lightbox-close {
+    position: absolute;
+    top: 4px;
+    right: 8px;
+    background: #dc3545;
     color: #fff;
     border: none;
-    transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 0.2s;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.complaints-nav-button:hover,
-.complaint-actions .mark_as_attended_button:hover,
-.complaint-actions .decline_complaint_button:hover,
-.confirmation-buttons .confirm-button:hover,
-.confirmation-buttons .cancel-button:hover {
-    background: #333;
-    color: #cee056;
-    transform: scale(1.05);
-    box-shadow: 0 0 18px 4px #cee056, 0 2px 16px rgba(0,0,0,0.12);
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.3);
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-
-@media (max-width: 700px) {
-  .admin-complaints-container {
-    padding: 0 6px;
-    min-height: 100vh;
-    height: auto;
-  }
-
-  .admin-complaints-box {
-    padding: 14px 4px;
-    border-radius: 6px;
-    max-width: 99vw;
-    min-width: unset;
-    width: 100%;
-  }
-
-  .admin-complaints-box h1 {
-    font-size: 1.4rem;
-    margin-bottom: 16px;
-  }
-
-  .complaints-nav {
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 16px;
-    width: 100%;
-  }
-
-  .complaints-nav-button {
-    width: 100%;
-    font-size: 1rem;
-    padding: 10px 0;
-    border-radius: 8px;
-  }
-
-  .complaints-list,
-  .complaints-log {
-    margin-top: 12px;
-    width: 100%;
-  }
-
-  .complaint-item,
-  .complaint-log-item {
-    padding: 12px;
-    font-size: 0.98rem;
-  }
-
-  .complaint-summary {
-    font-size: 1rem;
-  }
-
-  .complaint-details {
-    font-size: 0.95rem;
-  }
-
-  .message-textarea {
-    width: 100%;
-    min-width: 0;
-    max-width: 100%;
-    font-size: 0.95rem;
-    padding: 8px;
-  }
-
-  .complaint-actions {
-    flex-direction: column;
-    gap: 8px;
-    align-items: stretch;
-  }
-
-  .complaint-actions button {
-    width: 100%;
-    font-size: 1rem;
-    padding: 8px 0;
-  }
-
-  .confirmation-popup {
+.modal-content {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    padding: 24px 10px;
+    max-width: 95vw;
     width: 95vw;
-    min-width: unset;
-    padding: 14px 6px;
-  }
-
-  .confirmation-buttons {
+    text-align: center;
+}
+.modal-actions {
+    display: flex;
     flex-direction: column;
     gap: 10px;
-  }
-
-  .confirmation-buttons button {
-    width: 100%;
-    font-size: 1rem;
-    padding: 10px 0;
-  }
-
-  .admin-complaints-box .back_to_dashboard_button {
+    margin-top: 10px;
+}
+.modal-button {
     width: 100%;
     font-size: 1rem;
     padding: 10px 0;
     border-radius: 8px;
-    margin-bottom: 16px;
-  }
+    border: none;
+    cursor: pointer;
+}
+.modal-button.confirm {
+    background: #7a4f13;
+    color: #fff;
+}
+.modal-button.cancel {
+    background: #6c757d;
+    color: #fff;
 }

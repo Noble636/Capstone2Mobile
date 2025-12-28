@@ -16,7 +16,7 @@ const RentalInformation = () => {
       <div className="bubble b8"></div>
       <div className="rental-info-main-box">
         <h1 className="rental-info-title">Rental Information</h1>
-        <div className="rental-info-buttons">
+        <div className="rental-info-buttons-row">
           <div className="rental-info-btn-tooltip-wrapper">
             <Link to="/rental-agreement" className="home-animated-btn">
               Rental Agreement
@@ -29,6 +29,12 @@ const RentalInformation = () => {
             </Link>
             <span className="rental-info-btn-tooltip-below">View your rental confirmation statement</span>
           </div>
+        </div>
+        <div className="rental-info-btn-tooltip-wrapper browse-available-units">
+          <Link to="/tenant/browse-units" className="home-animated-btn">
+            Browse Available Units
+          </Link>
+          <span className="rental-info-btn-tooltip-below">See units you can reserve or inquire about</span>
         </div>
       </div>
       <div className="rental-info-home-btn-wrapper">
