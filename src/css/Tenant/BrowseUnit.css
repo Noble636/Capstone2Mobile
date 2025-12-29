@@ -32,21 +32,6 @@
   pointer-events: none;
 }
 
-.bubble {
-  position: absolute;
-  border-radius: 50%;
-  opacity: 0.18;
-  z-index: 1;
-  pointer-events: none;
-}
-.b1 { width: 80px; height: 80px; background: #fad0c4; top: 8%; left: 6%; }
-.b2 { width: 60px; height: 60px; background: #b084cc; top: 18%; right: 8%; }
-.b3 { width: 40px; height: 40px; background: #ffb347; bottom: 18%; left: 10%; }
-.b4 { width: 60px; height: 60px; background: #ff9a9e; bottom: 10%; right: 12%; }
-.b5 { width: 30px; height: 30px; background: #b084cc; top: 50%; left: 2%; }
-.b6 { width: 40px; height: 40px; background: #fad0c4; top: 60%; right: 4%; }
-.b7 { width: 30px; height: 30px; background: #ffb347; bottom: 8%; left: 40%; }
-.b8 { width: 30px; height: 30px; background: #ff9a9e; top: 80%; right: 30%; }
 
 .browse-unit-container {
   width: 99vw;

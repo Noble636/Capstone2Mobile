@@ -241,14 +241,6 @@ const AdminInbox = () => {
           alt="Background"
           className="admininbox-bg-image"
         />
-        <div className="admininbox-bubble b1"></div>
-        <div className="admininbox-bubble b2"></div>
-        <div className="admininbox-bubble b3"></div>
-        <div className="admininbox-bubble b4"></div>
-        <div className="admininbox-bubble b5"></div>
-        <div className="admininbox-bubble b6"></div>
-        <div className="admininbox-bubble b7"></div>
-        <div className="admininbox-bubble b8"></div>
       </div>
       <div className="admin-inbox-2col" style={{ flexDirection: 'column', position: 'relative', zIndex: 10, width: '100vw', minHeight: '100vh', maxWidth: '100vw', overflow: 'hidden' }}>
         {/* Posted Units (now stacked vertically) */}
