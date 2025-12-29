@@ -250,9 +250,9 @@ const AdminInbox = () => {
         <div className="admininbox-bubble b7"></div>
         <div className="admininbox-bubble b8"></div>
       </div>
-      <div className="admin-inbox-2col" style={{ flexDirection: 'row', position: 'relative', zIndex: 10 }}>
-        {/* Left: Posted Units */}
-        <div className="admin-inbox-sidebar" style={{ minWidth: 260, maxWidth: 320 }}>
+      <div className="admin-inbox-2col" style={{ flexDirection: 'column', position: 'relative', zIndex: 10, width: '100vw', minHeight: '100vh', maxWidth: '100vw', overflow: 'hidden' }}>
+        {/* Posted Units (now stacked vertically) */}
+        <div className="admin-inbox-sidebar" style={{ width: '100vw', maxWidth: '100vw', minWidth: 0, borderRight: 'none', borderBottom: '2px solid #eee', padding: '10px 6px', overflowY: 'auto', maxHeight: 220 }}>
           <h3>Posted Units</h3>
           {units.length === 0 && <div className="no-units">No posted units.</div>}
           {units.map(unit => (
@@ -283,10 +283,10 @@ const AdminInbox = () => {
             </div>
           ))}
         </div>
-        {/* Right: Inbox */}
-        <div className="admin-inbox-inbox" style={{ minWidth: 340, flex: 1 }}>
+        {/* Inbox (stacked below units) */}
+        <div className="admin-inbox-inbox" style={{ width: '100vw', maxWidth: '100vw', minWidth: 0, flex: 1, padding: '10px 6px' }}>
           <h3>Inbox</h3>
-          <button onClick={fetchConversations} style={{ marginBottom: 10 }}>Refresh</button>
+          <button onClick={fetchConversations} style={{ marginBottom: 10, width: '100%' }}>Refresh</button>
           {conversations.length === 0 && <div className="no-units">No conversations yet.</div>}
           {conversations.map((conv, idx) => (
             <div
@@ -318,10 +318,10 @@ const AdminInbox = () => {
             </div>
           ))}
         </div>
-        {/* Popup Chat Modal */}
+        {/* Popup Chat Modal (full width, bottom-aligned) */}
         {showChatModal && selectedConv && (
           <div className="inquiry-modal-backdrop" onClick={closeChatModal}>
-            <div className="inquiry-modal" style={{ maxWidth: 500 }} onClick={e => e.stopPropagation()}>
+            <div className="inquiry-modal" style={{ maxWidth: '100vw', width: '100vw', left: 0, right: 0, bottom: 0, position: 'fixed', borderRadius: '10px 10px 0 0', paddingBottom: 16 }} onClick={e => e.stopPropagation()}>
               <h3>Chat: {selectedUnit ? selectedUnit.title : selectedConv.unit_name}</h3>
               {/* Unit details */}
               {selectedUnit && (

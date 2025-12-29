@@ -1,196 +1,123 @@
-/* Pure mobile-only design for AdminInbox */
+/* Pure mobile-only, vertical layout for AdminInbox */
 
-.admin-inbox-container {
+.admin-inbox-2col {
+  display: flex;
+  flex-direction: column;
   width: 100vw;
   min-height: 100vh;
-  margin: 0;
-  padding: 10px 0 0 0;
-  background: #fff;
+  background: #f3f4f6;
   border-radius: 0;
   box-shadow: none;
-  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  max-width: 100vw;
+  overflow: hidden;
+  border: none;
 }
 
-.admin-inbox-container h2 {
-  color: #1e293b;
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-bottom: 16px;
+.admin-inbox-sidebar {
+  width: 100vw;
+  background: #fff;
+  border-right: none;
+  border-bottom: 2px solid #eee;
+  padding: 10px 6px;
+  overflow-y: auto;
+  max-height: 220px;
+  scrollbar-width: thin;
+  scrollbar-color: #222 #f3f4f6;
 }
-
-.unit-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  width: 100%;
-}
-
-.unit-card {
-  background: #f8fafc;
-  border-radius: 10px;
-  box-shadow: 0 1px 6px rgba(30,41,59,0.07);
-  width: 96vw;
-  max-width: 99vw;
-  padding: 12px 8px;
-  .admin-inbox-2col {
-    gap: 0;
-  }
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 auto;
-}
-
-.unit-info h3 {
-  color: #1e293b;
-  font-size: 1rem;
-  font-weight: 600;
-  .admin-inbox-sidebar {
-    padding: 10px 6px 0 6px;
-    overflow-y: visible;
-    max-height: unset;
-    scrollbar-width: none;
-    border-bottom: 2px solid #eee;
-  }
-  margin-bottom: 4px;
-}
-
-.unit-desc {
-  color: #64748b;
-  font-size: 0.95rem;
+.admin-inbox-sidebar h3 {
   margin-bottom: 8px;
-  .admin-inbox-inbox {
-    padding: 10px 6px 30px 6px;
-  }
-  min-height: 24px;
+  font-size: 1rem;
+  color: #1e293b;
+}
+.admin-inbox-unit-card {
+  border: 2px solid #222;
+  border-radius: 10px;
+  background: #f8fafc;
+  margin-bottom: 10px;
+  padding: 8px;
+  box-shadow: 0 1px 6px rgba(30,41,59,0.07);
 }
 
-.inquire-btn {
-  background: linear-gradient(90deg, #2563eb 0%, #1e40af 100%);
+.admin-inbox-delete-btn {
+  background: #e11d48;
   color: #fff;
   border: none;
-  border-radius: 6px;
-  .admin-inbox-unit-card {
-    width: 100%;
-    max-width: 99vw;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  padding: 8px 0;
-  font-size: 1rem;
-  font-weight: 600;
+  border-radius: 5px;
+  padding: 4px 10px;
+  font-size: 0.95rem;
   cursor: pointer;
-  margin-top: 6px;
+  margin-top: 4px;
+  transition: background 0.2s;
   width: 100%;
+}
+.admin-inbox-delete-btn:active {
+  background: #be123c;
 }
 
 .no-units {
   color: #64748b;
   font-size: 1rem;
-  .admin-inbox-conv {
-    width: 100%;
-    max-width: 99vw;
-    margin-left: auto;
-    margin-right: auto;
-  }
   margin: 18px auto;
 }
 
-.inquiry-modal-backdrop,
-.modal-backdrop {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(30,41,59,0.18);
-  .chat-messages {
-    width: 100%;
-    min-width: 180px;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-  }
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
+.admin-inbox-inbox {
+  padding: 10px 6px;
+  background: #f9fafb;
+  position: relative;
+  width: 100vw;
+  min-height: 220px;
+  max-width: 100vw;
 }
 
-.inquiry-modal {
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 16px rgba(30,41,59,0.18);
-  .inquiry-modal-backdrop,
-  .modal-backdrop {
-    align-items: flex-end;
-    padding: 0;
-  }
-  padding: 18px 8px 12px 8px;
-  max-width: 95vw;
-  width: 95vw;
+.admin-inbox-conv {
+  background: #f4f6fa;
+  border-radius: 8px;
+  padding: 10px 8px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  border: 2px solid #222;
+  box-shadow: 0 2px 8px rgba(30,41,59,0.10);
   position: relative;
 }
+.admin-inbox-conv.selected {
+  background: #e0e7ff;
+  border: 2.5px solid #2563eb;
+}
+.admin-inbox-conv-title {
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 1rem;
+}
+.admin-inbox-conv-tenant {
+  color: #64748b;
+  font-size: 0.97rem;
+}
+.admin-inbox-conv-last {
+  color: #334155;
+  font-size: 0.95rem;
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-.modal-center {
+.admin-inbox-unit-details {
+  background: #f3f4f6;
+  border-radius: 8px;
+  padding: 8px 6px;
+  margin-bottom: 10px;
   display: flex;
   align-items: center;
-  .inquiry-modal {
-    border-radius: 10px 10px 0 0;
-    box-shadow: 0 -2px 16px rgba(30,41,59,0.18);
-    max-width: 100vw;
-    width: 100vw;
-    min-height: 60vh;
-    bottom: 0;
-  }
-  justify-content: center;
-  width: 100vw; height: 100vh;
 }
-
-.modal-content {
-  background: #fff;
-  .modal-center {
-    align-items: flex-end;
-  }
-  border-radius: 12px;
-  box-shadow: 0 4px 32px rgba(30,41,59,0.18);
-  padding: 18px 8px 12px 8px;
-  min-width: 0;
-  max-width: 95vw;
-  width: 95vw;
-  text-align: center;
-}
-
-.inquiry-modal h3 {
-  .modal-content {
-    border-radius: 12px 12px 0 0;
-    max-width: 100vw;
-    width: 100vw;
-    min-height: 40vh;
-    bottom: 0;
-  }
-  color: #1e293b;
-  font-size: 1.05rem;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-
-.close-modal-btn {
-  background: none;
-  border: none;
-  .close-modal-btn {
-    font-size: 1.2rem;
-    z-index: 10;
-  }
-  color: #64748b;
-  font-size: 1rem;
-  cursor: pointer;
-  position: absolute;
-  top: 10px; right: 14px;
-}
-
-.inquiry-feedback {
-  margin-top: 8px;
-  color: #2563eb;
-  font-size: 0.98rem;
-  text-align: center;
+.admin-inbox-unit-images img {
+  margin-right: 4px;
+  border-radius: 4px;
+  border: 1px solid #e5e7eb;
+  width: 36px;
+  height: 28px;
+  object-fit: cover;
 }
 
 /* Chat bubbles for Messenger-like look (scoped for admin) */
@@ -201,8 +128,12 @@
   max-height: 220px;
   overflow-y: auto;
   margin-bottom: 8px;
+  width: 100%;
+  min-width: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
-
 .chat-bubble {
   max-width: 85%;
   margin-bottom: 8px;
@@ -242,119 +173,124 @@
   margin-bottom: 2px;
 }
 
-.admin-inbox-2col {
+/* Modal and backdrop for mobile */
+.inquiry-modal-backdrop,
+.modal-backdrop {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(30,41,59,0.18);
   display: flex;
-  flex-direction: column;
-  width: 100vw;
-  min-height: 100vh;
-  background: #f3f4f6;
-  border-radius: 0;
-  box-shadow: none;
-  margin: 0;
-  max-width: 100vw;
-  overflow: hidden;
-  border: none;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 1000;
 }
-
-.admin-inbox-sidebar {
-  width: 100vw;
+.inquiry-modal {
   background: #fff;
-  border-right: none;
-  padding: 10px 6px;
-  overflow-y: auto;
-  max-height: 220px;
-  scrollbar-width: thin;
-  scrollbar-color: #222 #f3f4f6;
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 -2px 16px rgba(30,41,59,0.18);
+  padding: 18px 8px 12px 8px;
+  max-width: 100vw;
+  width: 100vw;
+  min-height: 60vh;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
-.admin-inbox-sidebar h3 {
-  margin-bottom: 8px;
-  font-size: 1rem;
+.modal-center {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+.modal-content {
+  background: #fff;
+  border-radius: 12px 12px 0 0;
+  box-shadow: 0 4px 32px rgba(30,41,59,0.18);
+  padding: 18px 8px 12px 8px;
+  min-width: 0;
+  max-width: 100vw;
+  width: 100vw;
+  text-align: center;
+}
+.inquiry-modal h3 {
   color: #1e293b;
-}
-.admin-inbox-unit-card {
-  border: 2px solid #222;
-  border-radius: 10px;
-  background: #f8fafc;
+  font-size: 1.05rem;
+  font-weight: 600;
   margin-bottom: 10px;
-  padding: 8px;
-  box-shadow: 0 1px 6px rgba(30,41,59,0.07);
+}
+.close-modal-btn {
+  background: none;
+  border: none;
+  color: #64748b;
+  font-size: 1rem;
+  cursor: pointer;
+  position: absolute;
+  top: 10px; right: 14px;
+  z-index: 10;
+}
+.inquiry-feedback {
+  margin-top: 8px;
+  color: #2563eb;
+  font-size: 0.98rem;
+  text-align: center;
 }
 
-.admin-inbox-delete-btn {
-  background: #e11d48;
+.inquiry-modal input[type="text"],
+.inquiry-modal textarea {
+  border-radius: 6px;
+  border: 1.5px solid #cbd5e1;
+  padding: 10px;
+  font-size: 1rem;
+  margin-bottom: 8px;
+  background: #f8fafc;
+  box-shadow: 0 1px 4px rgba(30,41,59,0.04);
+}
+.inquiry-modal button[type="submit"] {
+  border-radius: 6px;
+  background: linear-gradient(90deg, #2563eb 0%, #1e40af 100%);
   color: #fff;
+  font-weight: 600;
   border: none;
-  border-radius: 5px;
-  padding: 4px 10px;
-  font-size: 0.95rem;
+  padding: 8px 0;
+  font-size: 1rem;
   cursor: pointer;
-  margin-left: 8px;
-  margin-top: 4px;
   transition: background 0.2s;
+  box-shadow: 0 1px 4px rgba(30,41,59,0.08);
   width: 100%;
 }
-.admin-inbox-delete-btn:active {
-  background: #be123c;
+.inquiry-modal button[type="submit"]:active {
+  background: linear-gradient(90deg, #1e40af 0%, #2563eb 100%);
 }
-
-.admin-inbox-conv {
-  background: #f4f6fa;
-  border-radius: 8px;
-  padding: 10px 8px;
-  margin-bottom: 8px;
-  cursor: pointer;
-  transition: background 0.2s, box-shadow 0.2s;
-  border: 2px solid #222;
-  box-shadow: 0 2px 8px rgba(30,41,59,0.10);
-  position: relative;
-}
-.admin-inbox-conv.selected {
-  background: #e0e7ff;
-  border: 2.5px solid #2563eb;
-}
-.admin-inbox-conv-title {
-  font-weight: 600;
-  color: #1e293b;
+.modal-btn {
+  padding: 8px 0;
+  border-radius: 6px;
+  border: none;
   font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: #e5e7eb;
+  color: #1e293b;
+  transition: background 0.2s, color 0.2s;
+  width: 100%;
+  margin-bottom: 6px;
 }
-.admin-inbox-conv-tenant {
-  color: #64748b;
-  font-size: 0.97rem;
+.modal-btn-primary {
+  background: #2563eb;
+  color: #fff;
 }
-.admin-inbox-conv-last {
-  color: #334155;
-  font-size: 0.95rem;
-  margin-top: 2px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.modal-btn-danger {
+  background: #e11d48;
+  color: #fff;
 }
-.admin-inbox-content {
-  background: transparent;
+.inquiry-modal,
+.modal-content {
+  border: 2.5px solid #222 !important;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.18);
 }
-.admin-inbox-inbox {
-  padding: 10px 6px;
-  background: #f9fafb;
-  position: relative;
-  width: 100vw;
-  min-height: 220px;
-}
-
-.admin-inbox-unit-details {
-  background: #f3f4f6;
-  border-radius: 8px;
-  padding: 8px 6px;
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-}
-.admin-inbox-unit-images img {
-  margin-right: 4px;
-  border-radius: 4px;
-  border: 1px solid #e5e7eb;
-  width: 36px;
-  height: 28px;
-  object-fit: cover;
+.centered-modal {
+  border: 2.5px solid #222 !important;
 }
 
 /* Animated gradient background and bubbles for AdminInbox */
@@ -393,70 +329,9 @@
 .admininbox-bubble.b6 { width: 40px; height: 40px; background: #fad0c4; top: 60%; right: 4%; }
 .admininbox-bubble.b7 { width: 25px; height: 25px; background: #ffb347; bottom: 8%; left: 40%; }
 .admininbox-bubble.b8 { width: 30px; height: 30px; background: #ff9a9e; top: 80%; right: 30%; }
-
 @keyframes admininbox-bg-move {
   0% {background-position: 0% 50%;}
   100% {background-position: 100% 50%;}
-}
-
-.inquiry-modal input[type="text"],
-.inquiry-modal textarea {
-  border-radius: 6px;
-  border: 1.5px solid #cbd5e1;
-  padding: 10px;
-  font-size: 1rem;
-  margin-bottom: 8px;
-  background: #f8fafc;
-  box-shadow: 0 1px 4px rgba(30,41,59,0.04);
-}
-
-.inquiry-modal button[type="submit"] {
-  border-radius: 6px;
-  background: linear-gradient(90deg, #2563eb 0%, #1e40af 100%);
-  color: #fff;
-  font-weight: 600;
-  border: none;
-  padding: 8px 0;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background 0.2s;
-  box-shadow: 0 1px 4px rgba(30,41,59,0.08);
-  width: 100%;
-}
-.inquiry-modal button[type="submit"]:active {
-  background: linear-gradient(90deg, #1e40af 0%, #2563eb 100%);
-}
-
-.modal-btn {
-  padding: 8px 0;
-  border-radius: 6px;
-  border: none;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  background: #e5e7eb;
-  color: #1e293b;
-  transition: background 0.2s, color 0.2s;
-  width: 100%;
-  margin-bottom: 6px;
-}
-.modal-btn-primary {
-  background: #2563eb;
-  color: #fff;
-}
-.modal-btn-danger {
-  background: #e11d48;
-  color: #fff;
-}
-
-.inquiry-modal,
-.modal-content {
-  border: 2.5px solid #222 !important;
-  box-shadow: 0 4px 32px rgba(0,0,0,0.18);
-}
-
-.centered-modal {
-  border: 2.5px solid #222 !important;
 }
 
 /* No global selectors, no desktop/tablet code, pure mobile layout */
